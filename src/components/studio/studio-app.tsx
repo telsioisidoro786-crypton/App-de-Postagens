@@ -65,7 +65,7 @@ export function StudioApp() {
             {panel === "image" ? <Inspector mode="image" /> : null}
             {panel === "library" ? <LibraryPanel /> : null}
           </div>
-          <MobileDock />
+          <MobileDock onExport={handleExport} onShare={handleShare} />
         </div>
         <Toaster
           theme="dark"
