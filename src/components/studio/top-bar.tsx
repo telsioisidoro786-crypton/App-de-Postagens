@@ -1,4 +1,4 @@
-import { Download, FolderOpen, FolderPlus, Plus } from "lucide-react";
+import { Download, FolderOpen, FolderPlus, Plus, Share2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { FORMATS, getFormat } from "@/lib/studio/formats";
 import { useStudio } from "@/lib/studio/store";
