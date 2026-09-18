@@ -7,7 +7,7 @@ import { MobileDock } from "@/components/studio/mobile-dock";
 import { TemplateRail } from "@/components/studio/template-rail";
 import { TopBar } from "@/components/studio/top-bar";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import { exportCurrentPost } from "@/lib/studio/export";
+import { exportCurrentPost, shareCurrentPost } from "@/lib/studio/export";
 import { useStudio } from "@/lib/studio/store";
 
 export function StudioApp() {
@@ -39,10 +39,14 @@ export function StudioApp() {
     void exportCurrentPost(canvasRef.current);
   }
 
+  function handleShare() {
+    void shareCurrentPost(canvasRef.current);
+  }
+
   return (
     <TooltipProvider delayDuration={250}>
       <div className="flex h-dvh flex-col overflow-hidden bg-background text-foreground">
-        <TopBar onExport={handleExport} />
+        <TopBar onExport={handleExport} onShare={handleShare} />
         <div className="flex min-h-0 flex-1">
           <aside className="hidden w-56 shrink-0 border-r border-border bg-card lg:flex lg:flex-col">
             <TemplateRail />
