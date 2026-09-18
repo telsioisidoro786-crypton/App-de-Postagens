@@ -5,7 +5,7 @@ import { useStudio } from "@/lib/studio/store";
 import { cn } from "@/lib/utils";
 import { toast } from "sonner";
 
-export function TopBar({ onExport }: { onExport: () => void }) {
+export function TopBar({ onExport, onShare }: { onExport: () => void; onShare: () => void }) {
   const current = useStudio((s) => s.current);
   const applyFormat = useStudio((s) => s.applyFormat);
   const saveToLibrary = useStudio((s) => s.saveToLibrary);
@@ -76,10 +76,10 @@ export function TopBar({ onExport }: { onExport: () => void }) {
         >
           <FolderOpen />
         </Button>
-        <Button variant="secondary" size="sm" onClick={save}>
-          <FolderPlus />
-          <span className="hidden sm:inline">Salvar</span>
-        </Button>
+        <Button variant="secondary" size="sm" onClick={onShare}>
+  <Share2 />
+  <span className="hidden sm:inline">Partilhar</span>
+</Button>
         <Button size="sm" onClick={onExport}>
           <Download />
           <span className="hidden sm:inline">Baixar PNG</span>
