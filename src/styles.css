@@ -1,0 +1,99 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Figtree", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Instrument Serif", ui-serif, Georgia, serif;
+
+  --color-background: #0c0b0a;
+  --color-foreground: #f3efe8;
+  --color-card: #141311;
+  --color-card-foreground: #f3efe8;
+  --color-popover: #141311;
+  --color-popover-foreground: #f3efe8;
+  --color-primary: #e8e1d5;
+  --color-primary-foreground: #0c0b0a;
+  --color-secondary: #1c1b19;
+  --color-secondary-foreground: #f3efe8;
+  --color-muted: #1c1b19;
+  --color-muted-foreground: #9c968c;
+  --color-accent: #242220;
+  --color-accent-foreground: #f3efe8;
+  --color-destructive: #c45c4a;
+  --color-destructive-foreground: #f3efe8;
+  --color-border: #2a2723;
+  --color-input: #2a2723;
+  --color-ring: #e8e1d5;
+  --color-stage: #080807;
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius: 12px;
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  * {
+    border-color: var(--color-border);
+  }
+
+  html,
+  body,
+  #app {
+    min-height: 100dvh;
+    background: var(--color-background);
+    color: var(--color-foreground);
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+}
+
+.post-art img {
+  outline: 1px solid rgb(255 255 255 / 0.06);
+  outline-offset: -1px;
+}
+
+.post-grain {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  opacity: 0.18;
+  mix-blend-mode: overlay;
+  background-image: url("/grain.svg");
+}
+
+.stage-grid {
+  background-image:
+    linear-gradient(to right, rgb(243 239 232 / 0.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(243 239 232 / 0.035) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

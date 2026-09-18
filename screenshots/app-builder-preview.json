@@ -1,0 +1,36 @@
+{
+  "url": "http://127.0.0.1:8080/",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "Grafia",
+      "hasCanvas": false,
+      "bodyTextLen": 1937,
+      "bodyTextHash": "760e61fbb8bd8c26408b95f3eb06bb521d0992b2f881b88b08ced95a58a74cf8",
+      "bodyTextPrefix": "Grafia Estúdio de posts 1:1 4:5 9:16 16:9 2:3 1080 × 1080 Salvar",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-preview.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "Grafia",
+      "hasCanvas": false,
+      "bodyTextLen": 1180,
+      "bodyTextHash": "7d43b73c709c047d3d6193d4272d71d8f8764d025fbe172d94ccc6d18999c5f6",
+      "bodyTextPrefix": "Grafia “ ENSAIO 04 A forma é a substância que se vê. Atelier Gra",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-preview-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/app-builder-preview.json"
+}
