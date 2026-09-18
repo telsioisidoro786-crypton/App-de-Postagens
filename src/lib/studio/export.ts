@@ -141,3 +141,48 @@ export async function exportCurrentPost(node: HTMLElement | null) {
     toast.error("Falha ao exportar. Tente de novo.", { id: "export" });
   }
 }
+
+export async function shareCurrentPost(node: HTMLElement | null) {
+  const { current } = useStudio.getState();
+  if (!node) {
+    toast.error("O post ainda não está pronto.");
+    return;
+  }
+
+  const format = getFormat(current.formatId);
+  const template = getTemplate(current.templateId);
+  const filename = `grafia-${slugify(template.name)}-${format.short.replace(":", "x")}.png`;
+
+  toast.loading("Preparando para partilhar…", { id: "share" });
+
+  try {
+    const dataUrl = await capturePost(node, format);
+
+    // Converter dataURL em File
+    const res = await fetch(dataUrl);
+    const blob = await res.blob();
+    const file = new File([blob], filename, { type: "image/png" });
+
+    // Tentar usar a partilha nativa do sistema
+    if (navigator.canShare && navigator.canShare({ files: [file] })) {
+      await navigator.share({
+        files: [file],
+        title: "Post criado com Grafia",
+        text: "Olha este post que criei com o Grafia!",
+      });
+      toast.success("Partilhado com sucesso!", { id: "share" });
+    } else {
+      // Fallback: fazer download
+      downloadDataUrl(dataUrl, filename);
+      toast.success("Imagem baixada. Agora pode partilhar manualmente.", { id: "share" });
+    }
+  } catch (err: any) {
+    if (err?.name === "AbortError") {
+      // Utilizador cancelou a partilha
+      toast.dismiss("share");
+      return;
+    }
+    console.error(err);
+    toast.error("Não foi possível partilhar. Tente baixar o PNG.", { id: "share" });
+  }
+}
